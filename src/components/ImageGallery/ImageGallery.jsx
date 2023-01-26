@@ -1,18 +1,21 @@
-import { Component } from 'react';
-import fetchPictures from 'services/pictures-api';
+import ImageGalleryItem from 'components/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 
-class ImageGallery extends Component {
-  state = {};
-
-  componentDidUpdate(prevProps, _) {
-    if (prevProps.value !== this.props.value) {
-      fetchPictures().then(data => console.log(data.data));
-    }
-  }
-
-  render() {
-    return <></>;
-  }
-}
+const ImageGallery = ({ pictures, showFullImage }) => {
+  return (
+    <ul className={css.imageGallery}>
+      {pictures.map(picture => {
+        return (
+          <ImageGalleryItem
+            key={picture.id}
+            previewImage={picture.webformatURL}
+            fullImage={picture.largeImageURL}
+            alt={picture.tags}
+            showFullImage={showFullImage}
+          />
+        );
+      })}
+    </ul>
+  );
+};
 export default ImageGallery;

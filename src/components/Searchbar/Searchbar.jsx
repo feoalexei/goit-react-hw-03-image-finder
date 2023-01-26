@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { FaSearch } from 'react-icons/fa';
+
 import css from './Searchbar.module.css';
 
 class Searchbar extends Component {
@@ -17,19 +19,24 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <>
-        <form className="SearchForm" onSubmit={this.handleSubmit}>
+      <header className={css.searchbar}>
+        <form className={css.searchform} onSubmit={this.handleSubmit}>
+          <button className={css.searchform__button}>
+            <span className={css.searchform__buttonLabel}>
+              <FaSearch />
+            </span>
+          </button>
           <input
-            className="SearchForm-input"
-            type="search"
-            placeholder="search"
-            aria-label="search"
+            className={css.searchform__input}
+            type="text"
+            autoComplete="off"
+            autoFocus
             value={this.state.value}
             onChange={this.handleChange}
+            placeholder="Search images and photos"
           />
-          <button className="SearchForm-button">Search</button>
         </form>
-      </>
+      </header>
     );
   }
 }
