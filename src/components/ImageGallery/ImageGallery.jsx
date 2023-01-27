@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 
@@ -18,4 +19,10 @@ const ImageGallery = ({ pictures, showFullImage }) => {
     </ul>
   );
 };
+
 export default ImageGallery;
+
+ImageGallery.propTypes = {
+  pictures: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  showFullImage: PropTypes.func,
+};
